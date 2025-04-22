@@ -19,16 +19,12 @@
   ]
 },
 {
-"name": "proto",
-"default": false,
-"schedule": [
-{% with default_index_settings={}, index_name="big5" %}
-{{ benchmark.collect(parts="delete_index.json") }},
-{{ benchmark.collect(parts="create_index.json") }},
-{{ benchmark.collect(parts="check_cluster_health.json") }},
-{{ benchmark.collect(parts="index_append.json") }},
-{{ benchmark.collect(parts="force_merge.json") }},
-{% endwith %}
-{{ benchmark.collect(parts="common/test-schedule.json") }}
-]
-}
+  "name": "big5-proto",
+  "default": false,
+  "schedule": [
+  {% with default_index_settings={}, index_name="big5" %}
+  {{ benchmark.collect(parts="../../common_operations/workload_setup_proto.json") }},
+  {% endwith %}
+  {{ benchmark.collect(parts="common/big5-schedule.json") }}
+  ]
+},
